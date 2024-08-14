@@ -5,7 +5,7 @@
 #### 題目1：
 請寫出一條查詢語句 (SQL)，列出在 2023 年 5 月下訂的訂單，使用台幣付款且5月總金額最 多的前 10 筆的旅宿 ID (bnb_id), 旅宿名稱 (bnb_name), 5 月總金額 (may_amount)
 #### 答案1：
-_假設 orders 的 created_at 為 UTC 時區，且查詢的是台灣時間 2024年5月_
+_假設 orders 的 created_at 為 UTC 時區，且查詢的是台灣時間 2024年5月_<br>
 <code>SELECT 
 ` `bnbs.id AS bnb_id,
 ` `bnbs.name AS bnb_name,
@@ -23,12 +23,12 @@ ORDER BY
 ` `may_amount DESC
 LIMIT 10</code>
 #### 題目2：
-在題目一的執行下，我們發現 SQL 執行速度很慢，您會怎麼去優化?請闡述您怎麼判斷與優 化的方式
+在題目一的執行下，我們發現 SQL 執行速度很慢，您會怎麼去優化?請闡述您怎麼判斷與優化的方式
 #### 答案2：
 1. 使用 EXPLAIN 確認目前資料表是否有索引、是否全表掃描
 2. 對 orders.currency 及 orders.created_at 建立索引，減少掃描時間
-3. 如果 orders 資料量大，會造成記憶體大量使用，可以先對 orders 做 sub query，再 JOIN bnbs
-   作法：
+3. 如果 orders 資料量大，會造成記憶體大量使用，可以先對 orders 做 sub query，再 JOIN bnbs<br>
+   作法：<br>
 <code>SELECT 
 ` `bnbs.id AS bnb_id,
 ` `bnbs.name AS bnb_name,
