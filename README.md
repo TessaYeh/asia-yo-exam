@@ -67,7 +67,7 @@ LIMIT 10</code>
 `OrderPriceOverException` 跟 `OrderNameFormatException` 繼承 `BaseJsonException`，可以在其他 Exception 繼承 `BaseJsonException` 而不會影響原有的 `OrderPriceOverException` 跟 `OrderNameFormatException`。<br>
 4. **SOLID - ISP**:<br>
 使用 `JsonExceptionInterface` 及 `BaseLoggerExceptionInterface` 隔離各個 Exception 印 Log 的能力，實作可以看到 `OrderPriceOverException` 是 implement `BaseLoggerException`，當發生錯誤時可以印出超過的金額是多少錢。<br>
-5.**SOLID - DIP**:<br>
+5. **SOLID - DIP**:<br>
 在 `OrderController` 中，在 construct DI 注入抽象 OrderService，而不是在使用時 new OrderService。<br>
 #### 設計模式
 1. Dependency Injection Pattern：在 `OrderController` 中，在 construct 依賴注入 `OrderService`
