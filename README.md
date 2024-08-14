@@ -51,22 +51,25 @@ LIMIT 10</code>
 #### 題目1：
 說明所使用的 SOLID 與設計模式分別為何
 #### 答案1：
-**SOLID - SRP**:<br>
+
+#### SOLID
+
+1. **SOLID - SRP**:<br>
 `OrderController`：負責處理 HTTP 請求及 Response<br>
 `OrderPostRequest` : 負責驗證 HTTP 請求資料<br>
 `OrderService` : 負責業務邏輯<br>
 `OrderExceptions` : 負責處理異常狀況<br>
 各個 Class 都有自己單一的權責。<br>
-**SOLID - OCP**:<br>
+2. **SOLID - OCP**:<br>
 把業務邏輯封裝在 `OrderService` 中，可以透過加入更多 function 來修改及擴充業務邏輯。<br>
 使用 `BaseJsonException` 可以擴充更多業務邏輯錯誤。<br>
-**SOLID - LSP**:<br>
+3. **SOLID - LSP**:<br>
 `OrderPriceOverException` 跟 `OrderNameFormatException` 繼承 `BaseJsonException`，可以在其他 Exception 繼承 `BaseJsonException` 而不會影響原有的 `OrderPriceOverException` 跟 `OrderNameFormatException`。<br>
-**SOLID - ISP**:<br>
+4. **SOLID - ISP**:<br>
 使用 `JsonExceptionInterface` 及 `BaseLoggerExceptionInterface` 隔離各個 Exception 印 Log 的能力，實作可以看到 `OrderPriceOverException` 是 implement `BaseLoggerException`，當發生錯誤時可以印出超過的金額是多少錢。<br>
-**SOLID - DIP**:<br>
+5.**SOLID - DIP**:<br>
 在 `OrderController` 中，在 construct DI 注入抽象 OrderService，而不是在使用時 new OrderService。<br>
-**設計模式**:<br>
+#### 設計模式
 1. Dependency Injection Pattern：在 `OrderController` 中，在 construct 依賴注入 `OrderService`
 2. Strategy Pattern：在 `OrderService` 中不同驗證方式可以替換成不同策略或擴充
 
